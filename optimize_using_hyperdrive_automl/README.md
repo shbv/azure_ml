@@ -18,11 +18,11 @@ It performed slightly better than Sklearn Logistic regression (0.9616) and using
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
-Pipeline includes 
-1. Read data and cleanup:
+Pipeline includes following steps:
+1. Read dataset and preprocess
 Most categorical variables are converted to numeric format (using one hot encoding, or binary values 1/0, or mapped values for months/days)
-2. Split the dataset into train & validation set
-3. Training a model using train split and "Logistic regression" classification algorithm, which is a linear model.  Validation set was used to evaluate model performace. Azure Hyperdrive was used to tune following model hyperparameters: 
+2. Split the dataset into train & validation datasets
+3. Training a model using train dataset and "Logistic regression" classification algorithm, which is a linear model.  Validation dataset was used to evaluate model performace. Azure Hyperdrive was used to tune following model hyperparameters: 
 - The regularization strength (C) that determines amount of model's overfitting to training data set.
 - Max number of iterations (max_iter) allowed for model training / convergence 
 4. Save the best performing model & register it for deployment.
@@ -57,8 +57,8 @@ Few improvements that come to mind are:
 -  More feature engineering could be done - Month & day of week are currently directly mapped to numerical values ; They should ideally be one hot encoded (or set using learned embeddings) since we are setting relative importance.
 -  Can increase the timeout for AutoML experiments or number of Hyperdrive iterations - so that more model / hyperparameters can be explored
 -  Use a better metric (like AUC / precision*) to evaluate models, since accuracy is not a good metric for datasets with imbalanced output classes 
--  Evaluation should be done on a test set instead of validation set - since hyperparameter tuning is done on validation set & the model could be overfit to this distribution
--  Use Azure Pipelines to code the steps, so that pipeline can be visualized in ML studio & can be automated better
+-  Evaluation should be done on a separate test dataset instead of validation dataset - since hyperparameter tuning is done on validation dataset & the model could be overfit to this distribution
+-  Use Azure Pipelines to code the pipeline steps, so that pipeline can be visualized in ML studio & can be automated better
 
 --- Remove ---
 ## Proof of cluster clean up
