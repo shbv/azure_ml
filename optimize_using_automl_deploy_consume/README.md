@@ -11,6 +11,15 @@
 ## Key Steps
 *TODO*: Write a short discription of the key steps. Remeber to include all the screenshots required to demonstrate key steps. 
 
+Dataset:
+![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/dataset.png)
+
+Compute:
+![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/compute.png)
+
+Apache benchmark
+![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/apb.png)
+
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 
