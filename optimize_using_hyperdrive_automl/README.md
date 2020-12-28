@@ -23,8 +23,9 @@ Pipeline includes following steps:
 Most categorical variables are converted to numeric format (using one hot encoding, or binary values 1/0, or mapped values for months/days)
 2. Split the dataset into train & validation datasets
 3. Training a model using train dataset and "Logistic regression" classification algorithm, which is a linear model.  Validation dataset was used to evaluate model performace. Azure Hyperdrive was used to tune following model hyperparameters: 
-- The inverse of regularization strength (C). Smaller values of C implies more regularization and less model overfitting to training dataset.
-- Max number of iterations (max_iter) allowed for solver convergence during model training.
+- The inverse of regularization strength (C). Smaller values of C implies more regularization and less model overfitting to training dataset.  
+- Max number of iterations (max_iter) allowed for solver convergence during model training.  
+Ref: https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
 4. Save the best performing model & register it for deployment.
 
 **What are the benefits of the parameter sampler you chose?**
