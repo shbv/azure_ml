@@ -3,13 +3,13 @@
 
 # Your Project Title Here
 
-*TODO:* Write an overview to your project.
+*TODO:* Write an overview to your project.  
 In this project, 
 - We train a machine learning model and deploy it using Azure ML studio. We then consume its endpoint using Python SDK and script using a JSON payload. 
 - We also create a pipeline to run AutoML using Python SDK and Jupyter notebook. We publish this pipeline to get a REST endpoint, and use this endpoint to trigger pipeline runs from Jupyter notebook.
 
 ## Architectural Diagram
-*TODO*: Provide an architectual diagram of the project and give an introduction of each step. An architectural diagram is an image that helps visualize the flow of operations from start to finish. In this case, it has to be related to the completed project, with its various stages that are critical to the overall flow. For example, one stage for managing models could be "using Automated ML to determine the best model". 
+*TODO*: Provide an architectual diagram of the project and give an introduction of each step. An architectural diagram is an image that helps visualize the flow of operations from start to finish. In this case, it has to be related to the completed project, with its various stages that are critical to the overall flow. For example, one stage for managing models could be "using Automated ML to determine the best model".    
 The following steps are performed in this project:
 
 
