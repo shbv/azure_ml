@@ -42,7 +42,7 @@ Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.trai
 
 Azure Auto ML (Automated machine learning) tries different models and algorithms during the automation and tuning process. There is no need for user to specify the algorithm. It supports various classificaion models e.g.: RandomForest, LightGBM, SVC, etc.
 The final high performing model from AutoML was VotingEnsemble, which is an ensemble of many child run models (mentioned above) with soft-voting (i.e. weighted averages of their predictions). 
-Ref:
+Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train
 
 ## Hyperdrive vs AutoML Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
