@@ -59,7 +59,7 @@ def main():
 
     os.makedirs('outputs', exist_ok=True)
     # files saved in the "outputs" folder are automatically uploaded into run history
-    joblib.dump(model, 'outputs/model.joblib')   
+    joblib.dump(model, 'outputs/model-hyperdrive.joblib')   
 
 if __name__ == '__main__':
 
@@ -68,9 +68,12 @@ if __name__ == '__main__':
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
     ### YOUR CODE HERE ###
-    from azureml.core.dataset import Dataset
     data_file = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-    ds = Dataset.Tabular.from_delimited_files(data_file)
+    dataset_tabular = TabularDatasetFactory()
+    ds = dataset_tabular.from_delimited_files(data_file)
+    # The above is same as:
+    #from azureml.core.dataset import Dataset
+    #ds = Dataset.Tabular.from_delimited_files(data_file)
 
     x, y = clean_data(ds)
 
