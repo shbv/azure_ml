@@ -15,7 +15,7 @@ The dataset used in this project seems to be derived from https://archive.ics.uc
 The best performing model is VotingEnsemble (accuracy: 0.9717) that was obtained using Azure Auto ML.
 It performed slightly better than Sklearn Logistic regression (accuracy: 0.9616) and using Azure Hyperdrive for hyperparameter tuning.
 
-## Scikit-learn Pipeline
+## Scikit-learn Pipeline using Hyperdrive
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
 Pipeline includes following steps:
@@ -42,7 +42,7 @@ Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.trai
 
 Azure Auto ML (Automated machine learning) tries different models and algorithms during the automation and tuning process. There is no need for user to specify the algorithm. The final high performing model from AutoML is VotingEnsemble, which is an ensemble of many child run models with soft-voting (i.e. weighted averages of their predictions). 
 
-## Pipeline comparison
+## Hyperdrive vs AutoML Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
 Although the difference in the accuracy is not significant, Auto ML gives slightly better accuracy.
@@ -60,7 +60,3 @@ Few improvements that come to mind are:
 -  Evaluation should be done on a separate test dataset instead of validation dataset - since hyperparameter tuning is done on validation dataset & the model could be overfit to this distribution
 -  Use Azure Pipelines to code the pipeline steps, so that pipeline can be visualized in ML studio & can be automated better
 
---- Remove ---
-## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
