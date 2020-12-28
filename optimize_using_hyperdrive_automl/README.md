@@ -12,8 +12,8 @@ The dataset used in this project seems to be derived from https://archive.ics.uc
 
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
 
-The best performing model is VotingEnsemble (accuracy: 0.9717) that was obtained using Azure Auto ML.
-It performed slightly better than Sklearn Logistic regression (accuracy: 0.9616) and using Azure Hyperdrive for hyperparameter tuning.
+The best performing model is VotingEnsemble (accuracy: 0.9171) that was obtained using Azure Auto ML.
+It performed slightly better than Sklearn Logistic regression (accuracy: 0.9157) and using Azure Hyperdrive for hyperparameter tuning.
 
 ## Scikit-learn Pipeline using Hyperdrive
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
@@ -29,7 +29,7 @@ Most categorical variables are converted to numeric format (using one hot encodi
 
 **What are the benefits of the parameter sampler you chose?**
 
-In random sampling that is used here, hyperparameter values for C & max_iter are randomly selected from the defined search space. It avoids user bias of choosing specific discrete hyperparameters and also is more efficient than grid search (which could have much larger search space) 
+In random sampling that is used here, hyperparameter values for C & max_iter are randomly selected from the defined search space. It avoids user bias of choosing specific discrete hyperparameters and also is more efficient than grid search (which could have much larger search space). The final model from Hyperdrive used C=0.39, max_iter=200. 
 Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py
 
 **What are the benefits of the early stopping policy you chose?**
