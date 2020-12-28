@@ -27,13 +27,11 @@ The following shows sequence of key steps:
 
 - AutoML model (all models and best model with 0.9164 accuracy):
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/model-1.png)
-
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/model-2.png)
 
 
 - Deployed model:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/deploy-model.png)
-
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/deploy-model-1.png)
 
 
@@ -43,7 +41,6 @@ The following shows sequence of key steps:
 
 - Enabled Application insights using logs.py:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/appinsights.png)
-
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/appinsights-1.png)
 
 
@@ -53,7 +50,6 @@ The following shows sequence of key steps:
 
 - endpoint.py script runs against the API and produces JSON output from the model:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/endpoint-0.png)
-
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/endpoint.png)
 
 
@@ -67,7 +63,6 @@ The following shows sequence of key steps:
 
 - Pipeline created and completed run
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-1.png)
-
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-2.png)
 
 
@@ -77,11 +72,10 @@ The following shows sequence of key steps:
 
 - Pipeline triggered using REST endpoint and completed the run
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-4.png)
-
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-5.png)
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:  
 The screencast recording is available at [link](https://youtu.be/qdDArLVlJoQ)
 
 ## Standout Suggestions
