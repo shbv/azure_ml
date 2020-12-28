@@ -29,12 +29,14 @@ Most categorical variables are converted to numeric format (using one hot encodi
 
 **What are the benefits of the parameter sampler you chose?**
 
-In random sampling that is used here, hyperparameter values for C & max_iter are randomly selected from the defined search space. It avoids user bias of choosing specific discrete hyperparameters and also is more efficient than grid search (which could have much larger search space). The final model from Hyperdrive used C=0.39, max_iter=200. 
+In random sampling that is used here, hyperparameter values for C & max_iter are randomly selected from the defined search space. It avoids user bias of choosing specific discrete hyperparameters and also is more efficient than grid search (which could have much larger search space). The final model from Hyperdrive used C=0.39, max_iter=200.
+
 Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py
 
 **What are the benefits of the early stopping policy you chose?**
 
 Early stopping policy (Bandit policy in this case) terminates runs which seem as potentially low performing models. Any run that doesn't fall within the slack factor or slack amount of the evaluation metric with respect to the best performing run will be terminated. It therefore increase the computational efficiency of training. However, in this case since we are logging the metric "Accuracy" only after the entire model is trained in train.py, it may not have much impact. This would be much more useful in a Deep learning model scenario where the callbacks log the "Accuracy" for each batch.
+
 Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition
 
 ## AutoML
@@ -42,6 +44,7 @@ Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.trai
 
 Azure Auto ML (Automated machine learning) tries different models and algorithms during the automation and tuning process. There is no need for user to specify the algorithm. It supports various classificaion models e.g.: RandomForest, LightGBM, XGBoostClassifier, LogisticRegression, etc.
 The final high performing model from AutoML was VotingEnsemble, which is an ensemble of many child run models (mentioned above) with soft-voting (i.e. weighted averages of their predictions). 
+
 Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train
 
 ## Hyperdrive vs AutoML Pipeline comparison
