@@ -11,60 +11,77 @@
 ## Key Steps
 *TODO*: Write a short discription of the key steps. Remeber to include all the screenshots required to demonstrate key steps. 
 
-Dataset:
+Registered Dataset in ML studio (Bank-marketing-dataset):
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/dataset.png)
 
-Compute:
+
+Compute Cluster used for training:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/compute.png)
 
-AutoML model:
+
+Experiment completed:
+![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/experiment.png)
+
+
+AutoML model (all models and best model with 0.9164 accuracy):
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/model-1.png)
 
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/model-2.png)
 
-Experiment:
-![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/experiment.png)
 
-Deploy model:
+Deployed model:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/deploy-model.png)
 
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/deploy-model-1.png)
 
-Logs:
+
+Enable logging using logs.py script:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/logs.png)
 
-App insights:
+
+Enabled Application insights using logs.py:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/appinsights.png)
 
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/appinsights-1.png)
 
 
-Swagger:
+Swagger running on localhost, and showing HTTP API methods/responses for the model:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/swagger_ui.png)
 
-Apache benchmark:
-![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/apb.png)
 
-End point:
+endpoint.py script runs against the API and produces JSON output from the model:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/endpoint-0.png)
 
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/endpoint.png)
 
-Pipeline:
+
+Apache benchmark runs against the HTTP API and retrieves performance results:
+![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/apb.png)
+
+
+Create Pipeline using SDK & jupyter notebook:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-0.png)
 
+
+Pipeline created and completed run
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-1.png)
 
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-2.png)
 
+
+Published pipeline, showing REST endpoint & Active status
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-3.png)
 
+
+Pipeline triggered using REST endpoint and completed the run
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-4.png)
 
 ![alt text](https://github.com/shbv/azure_ml/blob/main/optimize_using_automl_deploy_consume/images/pipeline-5.png)
 
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+
+https://youtu.be/qdDArLVlJoQ
 
 ## Standout Suggestions
 *TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
