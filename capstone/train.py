@@ -12,33 +12,27 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 
 run = Run.get_context()
 
-def clean_data(data):
-    # Dict for cleaning data
-    months = {"jan":1, "feb":2, "mar":3, "apr":4, "may":5, "jun":6, "jul":7, "aug":8, "sep":9, "oct":10, "nov":11, "dec":12}
-    weekdays = {"mon":1, "tue":2, "wed":3, "thu":4, "fri":5, "sat":6, "sun":7}
+def clean_data(ds):
 
-    # Clean and one hot encode data
-    x_df = data.to_pandas_dataframe().dropna()
-    jobs = pd.get_dummies(x_df.job, prefix="job")
-    x_df.drop("job", inplace=True, axis=1)
-    x_df = x_df.join(jobs)
-    x_df["marital"] = x_df.marital.apply(lambda s: 1 if s == "married" else 0)
-    x_df["default"] = x_df.default.apply(lambda s: 1 if s == "yes" else 0)
-    x_df["housing"] = x_df.housing.apply(lambda s: 1 if s == "yes" else 0)
-    x_df["loan"] = x_df.loan.apply(lambda s: 1 if s == "yes" else 0)
-    contact = pd.get_dummies(x_df.contact, prefix="contact")
-    x_df.drop("contact", inplace=True, axis=1)
-    x_df = x_df.join(contact)
-    education = pd.get_dummies(x_df.education, prefix="education")
-    x_df.drop("education", inplace=True, axis=1)
-    x_df = x_df.join(education)
-    x_df["month"] = x_df.month.map(months)
-    x_df["day_of_week"] = x_df.day_of_week.map(weekdays)
-    x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
+    df = ds.to_pandas_dataframe()
 
-    y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
-    
-    return x_df, y_df
+    # Drop columns
+    df.drop(['PassengerId', 'Name', 'Cabin', 'Ticket'], axis=1, inplace=True)
+
+    # Fill na
+    df['Embarked'] = df['Embarked'].fillna('S')  # Since df['Embarked'].value_counts() has 'S' as highest
+    mean_age = df['Age'].mean()
+    df['Age'] = df['Age'].fillna(mean_age)
+
+    # Encode as numeric values
+    df["Sex"] = df.Sex.apply(lambda s: 1 if s == "M" else 0)
+    Emb_map = {"C":0, "Q":1, "S":2}
+    df["Embarked"] = df.Embarked.map(Emb_map)
+
+    # Remove label
+    y_df = df.pop("Survived")
+
+    return df, y_df
 
 def main():
     # Add arguments to script
@@ -61,25 +55,20 @@ def main():
     # files saved in the "outputs" folder are automatically uploaded into run history
     joblib.dump(model, 'outputs/model-hyperdrive.joblib')   
 
+
 if __name__ == '__main__':
 
-    # TODO: Create TabularDataset using TabularDatasetFactory
-    # Data is located at:
-    # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-
-    ### YOUR CODE HERE ###
-    data_file = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-    dataset_tabular = TabularDatasetFactory()
-    ds = dataset_tabular.from_delimited_files(data_file)
-    # The above is same as:
-    #from azureml.core.dataset import Dataset
-    #ds = Dataset.Tabular.from_delimited_files(data_file)
+    # Get dataset
+    key = "Titanic"
+    description_text = "Titanic survival dataset"
+    if key in ws.datasets.keys(): 
+        print("Found registered dataset")
+        ds = ws.datasets[key] 
+    else:
+        print("Cannot find registered dataset")
 
     x, y = clean_data(ds)
 
-    # TODO: Split data into train and test sets.
-
-    ### YOUR CODE HERE ###a
     x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0)
 
     main()
