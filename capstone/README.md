@@ -38,7 +38,7 @@ The CSV file is attached to this repository. We access it directly by passing it
 ## Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment  
 
-Azure Auto ML (Automated machine learning) tries different models and algorithms during the automation and tuning process. There is no need for user to specify the algorithm. It supports various classificaion models e.g.: RandomForest, LightGBM, XGBoostClassifier, LogisticRegression, etc. 
+Azure Auto ML (Automated machine learning) tries different models and algorithms during the automation and tuning process. There is no need for user to specify the algorithm. It supports various classificaion models e.g.: RandomForest, LightGBM, XGBoostClassifier, LogisticRegression, etc.  
 Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train
 
 - We optimize for "accuracy", so its set as the primary metric.
@@ -83,6 +83,16 @@ Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-au
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
+We use Logistic regression, which is a linear classification model. We chose it since for its simplicity and that its a good starting point for ML modeling.
+We use hyperdrive to seach for the hyperparameters
+- Hyperparameters:
+  - The inverse of regularization strength (C). Smaller values of C implies more regularization and less model overfitting to training dataset. More values between 0.1 & 1.0 and fewer values less than 0.1 and greater than 1.0 were chosen
+  - Max number of iterations (max_iter) allowed for solver convergence during model training. Few values greater than default setting of 100 were chosen.
+- Early Termination policy:
+  - Bandit policy terminates any run that doesn't fall within the slack factor or slack amount of the evaluation metric with respect to the best performing run.
+  - It therefore increase the computational efficiency of training.
+- Sampling policy:
+  - Random sampling policy is chosen & a total of 15 runs from 30 total possible combinations of hyperparameters will be chosen & run by Hyperdrive.
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
