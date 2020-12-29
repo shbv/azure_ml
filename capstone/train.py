@@ -10,6 +10,7 @@ import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 from azureml.core import Workspace
+from azureml.core.dataset import Dataset
 
 run = Run.get_context()
 
