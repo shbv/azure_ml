@@ -9,6 +9,7 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
+from azureml.core import Workspace
 
 run = Run.get_context()
 
@@ -61,6 +62,7 @@ if __name__ == '__main__':
     # Get dataset
     key = "Titanic"
     description_text = "Titanic survival dataset"
+    ws = Workspace.get(name="quick-starts-ws-132278")
     if key in ws.datasets.keys(): 
         print("Found registered dataset")
         ds = ws.datasets[key] 
