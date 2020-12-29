@@ -8,7 +8,7 @@ In this project,
 - We compare performance of model trained using Azure Hyperdrive and Azure AutoML 
 - We pick the best model among them, deploy it as REST endpoint and consume the endpoint
 
-Here is the workflow:
+Here is the workflow:  
 ![alt text](https://github.com/shbv/azure_ml/blob/main/capstone/images/capstone-diagram.png)
 
 ## Project Set Up and Installation
