@@ -134,6 +134,9 @@ https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyp
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
+Since the best Hyperdrive model (accuracy: 0.7578) performs better than the best AutoML model (accuracy: 0.7407), we register and deploy this model as shown below.
+We get an active REST endpoint for this model. 
+
 - Best Hyperdrive model registered:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/capstone/images/hd-d-1.png)
 
@@ -145,6 +148,57 @@ https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyp
 - ML studio showing the deployed Hyperdrive model and its REST endpoint:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/capstone/images/hd-d-3.png)
 
+
+In order to query the endpoint and run inference on it, we pass sample inputs in JSON format to score.py.
+score.py runs inference using saved model and returns a response.
+
+Here is an example script:
+```
+import requests
+import json
+
+# URL for the web service, should be similar to:
+#scoring_uri = ''
+# If the service is authenticated, set the key or token
+#key = ''
+
+# 2 Data points to score, so we get 2 results back
+data = {"data":
+        [
+          {
+            "Pclass": 2,
+            "Sex": 1,
+            "Age": 40.0,
+            "SibSp": 0,
+            "Parch": 0,
+            "Fare": 70,
+            "Embarked": 1
+          },
+          {
+            "Pclass": 1,
+            "Sex": 0,
+            "Age": 33.0,
+            "SibSp": 0,
+            "Parch": 0,
+            "Fare": 70,
+            "Embarked": 2
+          }
+        ]
+    }
+    
+# Convert to JSON string
+input_data = json.dumps(data)
+with open("data.json", "w") as _f:
+    _f.write(input_data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+# If authentication is enabled, set the authorization header
+headers['Authorization'] = f'Bearer {key}'
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+```
 
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
