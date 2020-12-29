@@ -150,7 +150,7 @@ We get an active REST endpoint for this model.
 
 
 In order to query the endpoint and run inference on it, we pass sample inputs in JSON format to score.py.
-score.py runs inference using saved model and returns a response. Here is an example script:
+score.py runs inference using saved model and returns a response. Here is an example query script:
 ```
 import requests
 import json
