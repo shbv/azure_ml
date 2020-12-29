@@ -59,15 +59,9 @@ def main():
 
 if __name__ == '__main__':
 
-    # Get dataset
-    key = "Titanic"
-    description_text = "Titanic survival dataset"
-    ws = Workspace.get(name="quick-starts-ws-132278")
-    if key in ws.datasets.keys(): 
-        print("Found registered dataset")
-        ds = ws.datasets[key] 
-    else:
-        print("Cannot find registered dataset")
+    # Get dataset 
+    data_file = "https://github.com/shbv/azure_ml/blob/main/capstone/titanic_data.csv"
+    ds = Dataset.Tabular.from_delimited_files(data_file)
 
     x, y = clean_data(ds)
 
