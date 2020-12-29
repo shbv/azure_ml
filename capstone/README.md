@@ -204,7 +204,7 @@ resp = requests.post(scoring_uri, input_data, headers=headers)
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
 
-The screencast recording is available at [link](https://youtu.be/qdDArLVlJoQ)
+The screencast recording is available at [link](https://youtu.be/XMMesPDcZU0)
 
 
 ## Standout Suggestions
