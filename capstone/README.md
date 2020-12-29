@@ -105,9 +105,11 @@ Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.trai
 - The final high performing model from Hyperdrive has an accuracy of 0.7578.  
 - The hyperparameters for this model are C=0.1 and max_iter=200
 - To improve the model:
-    - We can increase the maximum number of runs per experiment
+    - We can increase the maximum number of runs per experiment to allow searching more hyperparameters
+    - We can try other sampling policies like Bayesian, so that the hyperparameter search is not completely random
     - We can perform more fine-grained hyperparameter search around this C=0.1. 
     - We can also perform better Feature engineering by setting better values for the missing data, and also extract relevant features from existing features.
+    - We can use 5 fold cross validation like AutoML, instead of a single validation set.
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
