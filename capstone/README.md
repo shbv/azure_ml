@@ -19,21 +19,24 @@ Clone this repository, and run the individual notebooks on Microsoft Azure compu
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+*TODO*: Explain about the data you are using and where you got it from.  
+
 In this project, we will be working on Titanic survival dataset from Kaggle (https://www.kaggle.com/c/titanic/data).
 
 ### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.  
+
 It consists of details of 891 people on Titanic. This includes 11 attributes for each person and whether they survived the distaster or not.
 We build a binary classification machine learning model to predict the survival based on the person's attibutes.
 
 ### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+*TODO*: Explain how you are accessing the data in your workspace.  
+
 The CSV file is attached to this repository. We access it directly by passing its URI to Python SDK Dataset.Tabular.from_delimited_files() method 
 
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment  
 
 Azure Auto ML (Automated machine learning) tries different models and algorithms during the automation and tuning process. There is no need for user to specify the algorithm. It supports various classificaion models e.g.: RandomForest, LightGBM, XGBoostClassifier, LogisticRegression, etc. 
 Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train
@@ -45,18 +48,17 @@ Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-au
 - Number of concurrent iterations is set to be equal to the maximum number of nodes provisioned.
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?  
 
-The final high performing model from AutoML was VotingEnsemble, with an accuracy of 0.7407.  
-It is an ensemble of many child run models (mentioned above) with soft-voting (i.e. weighted averages of their predictions).  
-Some of the parameters if the model from AutoML model, including voting weights are:
-- Standardscalerwrapper followed by LightGBMClassifier(boosting_type='goss',class_weight=None, colsample_bytree=0.3966666666666666, num_leaves=31,
+- The final high performing model from AutoML was VotingEnsemble, with an accuracy of 0.7407.  
+  It is an ensemble of many child run models (mentioned above) with soft-voting (i.e. weighted averages of their predictions).  
+- Some of the parameters if the model from AutoML model, including voting weights are:
+  - Standardscalerwrapper followed by LightGBMClassifier(boosting_type='goss',class_weight=None, colsample_bytree=0.3966666666666666, num_leaves=31,
                                                                                objective=None, random_state=None, reg_alpha=0.0, reg_lambda=0.0, silent=True,
                                                                                subsample=1.0, subsample_for_bin=200000, subsample_freq=0)
-- weights = [0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.2222222222222222, 0.1111111111111111, 0.1111111111111111]
+  - weights = [0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.2222222222222222, 0.1111111111111111, 0.1111111111111111]
 
-
-We could have trained AutoML longer by relaxing the experiment/iteration timeout setting.
+- We could have trained AutoML longer by relaxing the experiment/iteration timeout setting.
 
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
