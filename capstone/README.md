@@ -13,23 +13,51 @@ Here is the workflow:
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+Clone this repository, and run the individual notebooks on Microsoft Azure compute instance.
+
 
 ## Dataset
 
 ### Overview
 *TODO*: Explain about the data you are using and where you got it from.
+In this project, we will be working on Titanic survival dataset from Kaggle (https://www.kaggle.com/c/titanic/data).
 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+It consists of details of 891 people on Titanic. This includes 11 attributes for each person and whether they survived the distaster or not.
+We build a binary classification machine learning model to predict the survival based on the person's attibutes.
 
 ### Access
 *TODO*: Explain how you are accessing the data in your workspace.
+The CSV file is attached to this repository. We access it directly by passing its URI to Python SDK Dataset.Tabular.from_delimited_files() method 
+
 
 ## Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
 
+Azure Auto ML (Automated machine learning) tries different models and algorithms during the automation and tuning process. There is no need for user to specify the algorithm. It supports various classificaion models e.g.: RandomForest, LightGBM, XGBoostClassifier, LogisticRegression, etc. 
+Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train
+
+- We optimize for "accuracy", so its set as the primary metric.
+- We allow for automated featurization like feature scaling etc. that AutoML supports out of the box.
+- We enable early stopping for computational efficiency.
+- We set a few settings like experiment/iteration timeout minutes due to time limitations of project's VM.
+- Number of concurrent iterations is set to be equal to the maximum number of nodes provisioned.
+
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+
+The final high performing model from AutoML was VotingEnsemble, with an accuracy of 0.7407.  
+It is an ensemble of many child run models (mentioned above) with soft-voting (i.e. weighted averages of their predictions).  
+Some of the parameters if the model from AutoML model, including voting weights are:
+- Standardscalerwrapper followed by LightGBMClassifier(boosting_type='goss',class_weight=None, colsample_bytree=0.3966666666666666, num_leaves=31,
+                                                                               objective=None, random_state=None, reg_alpha=0.0, reg_lambda=0.0, silent=True,
+                                                                               subsample=1.0, subsample_for_bin=200000, subsample_freq=0)
+- weights = [0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.2222222222222222, 0.1111111111111111, 0.1111111111111111]
+
+
+We could have trained AutoML longer by relaxing the experiment/iteration timeout setting.
+
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
@@ -47,6 +75,7 @@ Here is the workflow:
 
 - Some parameters of best AutoML model:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/capstone/images/automl-4.png)
+
 
 
 ## Hyperparameter Tuning
@@ -88,6 +117,7 @@ Here is the workflow:
 - ML studio showing the deployed Hyperdrive model and its REST endpoint:
 ![alt text](https://github.com/shbv/azure_ml/blob/main/capstone/images/hd-d-3.png)
 
+
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 - A working model
@@ -95,6 +125,7 @@ Here is the workflow:
 - Demo of a sample request sent to the endpoint and its response
 
 The screencast recording is available at [link](https://youtu.be/qdDArLVlJoQ)
+
 
 ## Standout Suggestions
 *TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
