@@ -1,8 +1,12 @@
 *NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
 
-# Your Project Title Here
+# Train and deploy machine learning model using Microsoft Azure Machine learning 
 
 *TODO:* Write a short introduction to your project.
+In this project, 
+- We train and deploy machine learning model to predict survival on Titanic using Microsoft Azure Machine Learning.
+- We compare performance of model trained using Azure Hyperdrive and Azure AutoML 
+- We pick the best model, deploy it as REST endpoint and consume the endpoint
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
