@@ -61,7 +61,7 @@ def main():
 if __name__ == '__main__':
 
     # Get dataset 
-    data_file = "https://github.com/shbv/azure_ml/blob/main/capstone/titanic_data.csv"
+    data_file = "https://raw.githubusercontent.com/shbv/azure_ml/main/capstone/titanic_data.csv"
     ds = Dataset.Tabular.from_delimited_files(data_file)
 
     x, y = clean_data(ds)
