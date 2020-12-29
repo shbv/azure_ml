@@ -95,9 +95,11 @@ We use Azure Hyperdrive to tune the model's hyperparameters:
   - It therefore increase the computational efficiency of training.
 - Sampling policy:
   - Random sampling policy is chosen & a total of 15 runs from 30 total possible combinations of hyperparameters will be chosen & run by Hyperdrive.  
-Ref: https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression  
-Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py  
-Ref: https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition
+  
+Refs:   
+https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression  
+https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py  
+https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
