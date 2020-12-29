@@ -58,7 +58,9 @@ Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-au
                                                                                subsample=1.0, subsample_for_bin=200000, subsample_freq=0)
   - weights = [0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.1111111111111111, 0.2222222222222222, 0.1111111111111111, 0.1111111111111111]
 
-- We could have trained AutoML longer by relaxing the experiment/iteration timeout setting.
+- To improve the model: 
+  - We can train AutoML longer by relaxing the experiment/iteration timeout setting.
+  - We can also perform better Feature engineering by setting better values for the missing data, and also extract relevant features from existing features.
 
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
@@ -83,8 +85,8 @@ Ref: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-au
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
-We use Logistic regression, which is a linear classification model. We chose it since for its simplicity and that its a good starting point for ML modeling.
-We use hyperdrive to seach for the hyperparameters
+We use Logistic regression, which is a linear classification model. We chose it for its simplicity, which makes it a good starting point for ML modeling.
+We use Azure Hyperdrive to tune the model's hyperparameters:
 - Hyperparameters:
   - The inverse of regularization strength (C). Smaller values of C implies more regularization and less model overfitting to training dataset. More values between 0.1 & 1.0 and fewer values less than 0.1 and greater than 1.0 were chosen
   - Max number of iterations (max_iter) allowed for solver convergence during model training. Few values greater than default setting of 100 were chosen.
@@ -96,6 +98,13 @@ We use hyperdrive to seach for the hyperparameters
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+
+- The final high performing model from Hyperdrive has an accuracy of 0.7578.  
+- The hyperparameters for this model are C=0.1 and max_iter=200
+- To improve the model:
+    - We can increase the maximum number of runs per experiment
+    - We can perform more fine-grained hyperparameter search around this C=0.1. 
+    - We can also perform better Feature engineering by setting better values for the missing data, and also extract relevant features from existing features.
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
